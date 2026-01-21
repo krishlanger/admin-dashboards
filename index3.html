@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<style>
+:root {
+    --bg: #0b1320;
+    --card: #141f33;
+    --text: #ffffff;
+    --border: rgba(255,255,255,0.1);
+}
+
+.light {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --text: #000000;
+    --border: rgba(0,0,0,0.1);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    font-size: 28px;
+}
+
+/* Toggle button */
+.toggle {
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    cursor: pointer;
+}
+
+/* Grid Layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: 250px repeat(3, 1fr);
+    gap: 30px;
+    padding: 30px 40px;
+}
+
+/* Cards */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 30px;
+    font-size: 24px;
+}
+
+/* Sidebar */
+.sidebar {
+    grid-row: span 2;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div>Admin Dashboard</div>
+    <button class="toggle" onclick="toggleTheme()">🌞 Light Mode</button>
+</div>
+
+<div class="dashboard">
+    <div class="card sidebar">Navigation</div>
+    <div class="card">Analytics</div>
+    <div class="card">Users</div>
+    <div class="card">Settings</div>
+</div>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("light");
+    const btn = document.querySelector(".toggle");
+    btn.innerText = document.body.classList.contains("light")
+        ? "🌙 Dark Mode"
+        : "🌞 Light Mode";
+}
+</script>
+
+</body>
+</html>
